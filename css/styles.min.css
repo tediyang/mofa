@@ -14233,7 +14233,7 @@ section.section {
   box-shadow: 0 20px 38px rgba(0, 0, 0, 0.16);
 }
 .button--primary {
-  border: 2px solid #ffffff;
+  border: 2px solid #002f62;
 }
 .button--filled {
   background-color: #002f6c;
@@ -22428,8 +22428,14 @@ section.shop {
 }
 .testimonials-style-3__nav .slider__next,
 .testimonials-style-3__nav .slider__prev {
-  color: #343877;
+  color: #002f62;
+  border: 2px solid #002f62;
 }
+.testimonials-style-3__nav .slider__next:hover,
+.testimonials-style-3__nav .slider__prev:hover {
+  color: #ffffff;
+}
+
 @media only screen and (min-width: 576px) {
   .testimonials-style-3__nav {
     display: -webkit-box;
@@ -22915,6 +22921,15 @@ section.shop {
 
 /* CUSTOM */
 .header .container-fluid .button {
+  color: #ffffff;
+}
+
+.promo .button--primary,
+.footer .button--primary {
+  border: 2px solid #ffffff;
+}
+
+.aside-dropdown .button span {
   color: #ffffff;
 }
 
