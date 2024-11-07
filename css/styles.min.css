@@ -23019,7 +23019,7 @@ section.shop {
     position: relative;
     background: url("/img/gallery_8.jpg");
     background-size: cover;
-    color: #002f62;
+    color: #000000;
     text-transform: uppercase;
     font-size: 1.1em;
     font-weight: bold;
@@ -23033,6 +23033,7 @@ section.shop {
   .popover-item + .popover-item{
     background: url("/img/blog_2.png");
     background-size: cover;
+    color: #ffffff;
   }
 
   .popover-item:hover {
