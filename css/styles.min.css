@@ -1607,6 +1607,9 @@ pre code {
   .offset-xl-11 {
     margin-left: 91.666667%;
   }
+  .offset-xr-1 {
+    margin-right: 8.333333%;
+  }
 }
 .table {
   width: 100%;
@@ -14149,15 +14152,27 @@ section.section {
   section.section {
     padding: 90px 0;
   }
+
+  section.section.pad-40 {
+    padding: 50px 0;
+  }
 }
 @media only screen and (min-width: 992px) {
   section.section {
     padding: 120px 0;
   }
+
+  section.section.pad-40 {
+    padding: 80px 0;
+  }
 }
 @media only screen and (min-width: 1200px) {
   section.section {
     padding: 140px 0;
+  }
+
+  section.section.pad-40 {
+    padding: 100px 0;
   }
 }
 .align-container {
