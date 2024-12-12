@@ -16570,12 +16570,15 @@ header.header--inner {
 }
 @media only screen and (min-width: 992px) {
   .header-logo__img {
-    max-height: 40px;
+    max-height: 65px;
+  }
+  .header-logo__left {
+    padding-left: 1rem !important;
   }
 }
 @media only screen and (min-width: 1367px) {
   .header-logo__img {
-    max-height: 45px;
+    max-height: 75px;
   }
 }
 .lang-select {
@@ -19127,7 +19130,7 @@ footer.footer {
 }
 @media only screen and (min-width: 992px) {
   .footer-logo__img {
-    max-height: 60px;
+    max-height: 100px;
   }
 }
 .footer-socials {
