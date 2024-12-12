@@ -16558,16 +16558,28 @@ header.header--inner {
 @media only screen and (min-width: 576px) {
   .header-logo {
     margin-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .header-logo__img {
+    min-height: 50px;
   }
 }
+
 .header-logo__link {
   text-decoration: none;
 }
 .header-logo__img {
   display: inline-block;
-  max-height: 35px;
+  max-height: 40px;
   max-width: auto;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
+.header-logo__left {
+  padding-left: 1rem !important;
+}
+
 @media only screen and (min-width: 992px) {
   .header-logo__img {
     max-height: 65px;
