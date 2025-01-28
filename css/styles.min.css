@@ -19133,6 +19133,9 @@ footer.footer {
   margin-top: 30px;
   width: 100%;
 }
+.footer-logo {
+  text-align: center;
+}
 .footer-logo__link {
   text-decoration: none;
 }
@@ -19151,6 +19154,7 @@ footer.footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: center;
   color: #fff;
 }
 @media only screen and (min-width: 576px) {
@@ -19162,7 +19166,7 @@ footer.footer {
   list-style: none;
 }
 .footer-socials__item:not(:last-of-type) {
-  margin-right: 40px;
+  margin-right: 25px;
 }
 .footer-socials__link {
   color: inherit;
