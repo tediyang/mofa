@@ -19133,15 +19133,13 @@ footer.footer {
   margin-top: 30px;
   width: 100%;
 }
-.footer-logo {
-  border-radius: 50%;
-}
 .footer-logo__link {
   text-decoration: none;
 }
 .footer-logo__img {
   max-height: 50px;
   width: auto;
+  border-radius: 50%;
 }
 @media only screen and (min-width: 992px) {
   .footer-logo__img {
