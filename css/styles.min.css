@@ -19134,7 +19134,7 @@ footer.footer {
   width: 100%;
 }
 .footer-logo {
-  text-align: center;
+  border-radius: 50%;
 }
 .footer-logo__link {
   text-decoration: none;
@@ -19154,7 +19154,7 @@ footer.footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   color: #fff;
 }
 @media only screen and (min-width: 576px) {
