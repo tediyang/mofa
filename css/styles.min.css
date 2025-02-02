@@ -529,6 +529,7 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -6838,6 +6839,10 @@ button.bg-dark:hover {
   -webkit-box-orient: horizontal !important;
   -webkit-box-direction: normal !important;
   flex-direction: row !important;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 .flex-column {
   -ms-flex-direction: column !important;
@@ -23171,4 +23176,28 @@ section.shop {
     -ms-flex-direction: column-reverse;
     flex-direction: column-reverse !important;
   }
+
+  .col-md-reverse {
+    flex-direction: column-reverse !important;
+  }
+}
+
+/* Custom */
+.gap-1 {
+  gap: 1rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+.gap-3 {
+  gap: 3rem;
+}
+.gap-4 {
+  gap: 4rem;
+}
+.gap-5 {
+  gap: 5rem;
+}
+.gap-6 {
+  gap: 6rem;
 }
