@@ -23295,3 +23295,10 @@ section.shop {
 .gap-6 {
   gap: 6rem;
 }
+.header__bg-overlay::before {
+  content: "";
+  position: absolute;
+  background: #000000;
+  inset: 0;
+  opacity: 0.4;
+}
