@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+XML Sitemap: https://mofafoundation.ng/sitemap.xml
