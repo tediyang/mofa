@@ -78,7 +78,7 @@ $((function() {
       	<div class="col-xl-10 offset-xl-1">
           <div class="upcoming-item">
             <div class="upcoming-item__aside ${beneficiary.type.toLowerCase()} ${beneficiary.type.toLowerCase()}-none"><span>${beneficiary.type}</span></div>
-            <div class="upcoming-item__body ac-mobile ${beneficiary.type}-mobile">
+            <div class="upcoming-item__body ac-mobile ${beneficiary.type.toLowerCase()}-mobile">
               <div class="row align-items-center">
                 <div class="col-lg-5 col-xl-3">
                   <div class="upcoming-item__img"><img class="img--bg" src=${beneficiary.image} alt="img"/></div>
