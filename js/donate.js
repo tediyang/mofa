@@ -75,7 +75,7 @@ $((function() {
     let html = "";
     allBeneficiaries.data.forEach(beneficiary => {
       html += `
-      	<div class="col-xl-10 offset-xl-1">
+      	<div class="col-xl-10 offset-xl-1" data-benefactor-id="${beneficiary.id}">
           <div class="upcoming-item">
             <div class="upcoming-item__aside ${beneficiary.type.toLowerCase()} ${beneficiary.type.toLowerCase()}-none"><span>${beneficiary.type}</span></div>
             <div class="upcoming-item__body ac-mobile ${beneficiary.type.toLowerCase()}-mobile">
@@ -87,7 +87,7 @@ $((function() {
                   <div class="upcoming-item__description">
                     <h6 class="upcoming-item__title">${beneficiary.illness}</h6>
                     <p class="mini">${beneficiary.history.substring(0, 80) + "..."}</p>
-                    <a href="benefactor.html">learn more</a>
+                    <a href="benefactor.html?id=${beneficiary.id}" class="">read more</a>
                   </div>
                 </div>
                 <a class="align-self-center button button--${beneficiary.type.toLowerCase()} mx-auto my-3" href="#">Donate Now</a>
@@ -98,7 +98,8 @@ $((function() {
       `;
     });
     $(".beneficiary").html(html);
-  };
 
+  };
+  
   fetchBeneficiaries(); // Initial fetch and display
 }));
