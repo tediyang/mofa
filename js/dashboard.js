@@ -136,7 +136,8 @@ $((function() {
         title: "Health",
         description: "Assisting Orphanage Homes to Afford Basic Necessities.",
         image: "rectangle_3.jpg"
-      },
+      }
+      ,
       {
         id: "10005",
         title: "Education",
@@ -290,8 +291,8 @@ $((function() {
     const campaigns = recentCampaigns();
     const $track = $('.slider-track');
     const totalItems = campaigns.length;
-    const $arrowLeft = $('.arrow-left');
-    const $arrowRight = $('.arrow-right');
+    const $arrowLeft = $('.slider-arrow.left');
+    const $arrowRight = $('.slider-arrow.right');
     let currentIndex = 0;
     let html = '';
 
@@ -301,8 +302,8 @@ $((function() {
     }
 
     function updateArrows() {
-      $arrowLeft.toggleClass('disabled', currentIndex === 0);
-      $arrowRight.toggleClass('disabled', currentIndex >= totalItems - 3);
+      $arrowLeft.toggleClass('none', currentIndex === 0);
+      $arrowRight.toggleClass('none', currentIndex >= totalItems - 3);
     }
 
     $.each(campaigns, function(index, campaign) {
