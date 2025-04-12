@@ -1922,6 +1922,9 @@ pre code {
 .table-col-date {
   border-bottom: 1px solid #e3e3e3;
 }
+.table-col-id.empty {
+  border-right: 1px solid #e3e3e3;
+}
 @media (max-width: 575.98px) {
   .table-responsive-sm {
     display: block;
@@ -1942,6 +1945,13 @@ pre code {
   }
   .table-responsive-md > .table-bordered {
     border: 0;
+  }
+  .table-heading,
+  .table-body {
+    display: none;
+  }
+  .table-b-right {
+    border-right: 1px solid #e3e3e3;
   }
 }
 @media (max-width: 991.98px) {
@@ -21157,6 +21167,18 @@ section.shop {
   font-size: 30px;
   font-weight: bold;
 }
+/* mobile navigation starts */
+.aside-dropdown__item .create-plus__con {
+  left: -1em;
+  background: var(--mofa-blue);
+  border-radius: 25px;
+  color: #ffffff;
+  padding: 12px 15px 12px 8px;
+}
+.aside-dropdown__item .create-plus__con .create-text {
+  opacity: 1;
+}
+/* mobile navigation ends */
 /* tablet navigation starts */
 .aside-toggle {
   display: none;
@@ -21176,6 +21198,7 @@ section.shop {
 .hidden {
   display: none;
 }
+/* tablet navigation ends */
 .benefactor-name {
   margin-top: -0.5rem;
 }
@@ -21192,6 +21215,12 @@ section.shop {
   max-height: 120px;
   max-width: 120px;
 }
+.dashboard-content {
+  margin-top: 5rem;
+}
+.dashboard-overview {
+  margin-top: 1rem;
+}
 .dashboard-overview .title,
 .dashboard-requests .title,
 .dashboard-campaigns,
@@ -21205,7 +21234,7 @@ section.shop {
   position: absolute;
   bottom: -4px;
   left: 0;
-  width: 30%;
+  width: 10rem;
   height: 2px;
   background: linear-gradient(
     to right,
@@ -21221,7 +21250,7 @@ section.shop {
   content: '';
   position: absolute;
   bottom: -7px;
-  left: 30%;
+  left: 10rem;
   width: 8px;
   height: 8px;
   background: #002f6c;
@@ -21232,25 +21261,58 @@ section.shop {
     left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
+.overview__container {
+  margin-top: 2rem;
+}
 .overview__mobile-toggle {
   display: flex;
   justify-content: space-around;
   margin-bottom: 15px;
 }
+.overview-icon {
+  flex: 0 0 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  width: 30px;
+  height: 40px;
+  border-radius: 5px;
+}
+.overview-icon.active {
+  background: #002f6c;
+}
+.overview-icon.active img {
+  filter: invert(1);
+}
+.overview-icon:last-child {
+  border: none;
+}
+.overview-icon img {
+  width: 24px;
+  height: 24px;
+}
+.overview-icon:nth-child(2) img {
+  width: 21px;
+}
 .overview__items {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: relative;
+  min-height: 20rem;
 }
 .overview__items .data-box {
-  width: 31%;
+  position: absolute;
+  background: #ffffff;
+  width: 100%;
   height: 19rem;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.30);
+  box-shadow: 0 2px 8px #002f6c60;
 }
 .overview__items .data-box.active {
-  box-shadow: 0 4px 20px rgba(40, 167, 69, 0.5);
+  z-index: 1;
 }
 .overview__items .data-box .stats {
   display: flex;
@@ -21266,6 +21328,47 @@ section.shop {
 }
 .overview__items .data-box .stats .body .content {
   width: 50%;
+}
+.overview__items .info-tooltip {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  left: 50px; /* Adjust based on your layout */
+  top: 30px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+.overview__items .info-tooltip.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.overview__items .info-tooltip h4 {
+  margin-top: 0;
+  color: #333;
+  font-size: 16px;
+}
+.overview__items .info-tooltip p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.overview__items .info-tooltip .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #999;
+}
+.overview__items .info-tooltip .close-btn:hover {
+  color: #666;
 }
 .stats .size {
   font-size: 30px;
@@ -21284,24 +21387,14 @@ section.shop {
   overflow: hidden;
 }
 .slider-track {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   transition: transform 0.3s ease;
 }
 .slider-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   box-sizing: border-box;
   width: 30%;
-  min-height: 25rem;
   border-radius: 12px !important;
 }
 .slider-item .slider-cover {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   height: 10rem;
@@ -21332,7 +21425,7 @@ section.shop {
   background: var(--mofa-blue);
 }
 .slider-arrow.left {
-  left: -1em;
+  left: -0.6em;
 }
 .slider-arrow.right {
   right: -0.6em;
@@ -21438,11 +21531,15 @@ section.shop {
 /* tablet navigation ends */
 
 @media only screen and (min-width: 576px) {
+  .sm-mt-5 {
+    margin-top: 3rem !important;
+  }
   .aside-dashboard {
     display: flex;
   }
   .dashboard-content {
     position: relative;
+    margin-top: 0;
     margin-left: 6rem;
     width: calc(100% - 5rem);
   }
@@ -21452,8 +21549,73 @@ section.shop {
   .nav-item {
     left: 0.4rem;
   }
+  .dashboard-overview {
+    margin-top: 0;
+  }
+  .overview__container {
+    margin-top: 0;
+  }
   .overview__mobile-toggle {
     display: none;
+  }
+  .overview__items .data-box {
+    position: relative;
+    width: 31%;
+    height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.30);
+  }
+  .overview__items .data-box.active {
+    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.5);
+  }
+  .slider-track {
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+  }
+  .slider-item {
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 30%;
+    min-height: 25rem;
+    border-radius: 12px !important;
+  }
+  .dashboard-overview .title::after,
+  .dashboard-requests .title::after,
+  .dashboard-campaigns .title::after {
+    width: 35%;
+  }
+  .dashboard-overview .title::before,
+  .dashboard-requests .title::before,
+  .dashboard-campaigns .title::before {
+    left: 35%;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+  .dashboard-content .container {
+    max-width: 650px !important;
+  }
+  .slider-item {
+    flex: 0 0 48%;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .slider-item {
+    flex: 0 0 100%;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .benefactor-name {
+    font-size: 32px;
+  }
+  .stats .size {
+    font-size: 24px;
+  }
+  .overview__items .info-tooltip {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    top: 40px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -21583,6 +21745,9 @@ section.shop {
   .aside-dashboard:hover .create-plus__con:hover {
     box-shadow: 0 20px 38px rgba(0, 0, 0, 0.10);
   }
+  /* .overview__items .data-box .stats .body {
+    flex-direction: row;
+  } */
   .slider-item:hover .btn-slider {
     transform: translateY(-2rem);
   }
@@ -21596,22 +21761,24 @@ section.shop {
   }
 }
 .notification {
-  display: flex;
+  display: none;
   justify-content: end;
   align-items: center;
   position: relative;
   height: 5rem;
   width: 100%;
 }
-.notification .notification-icon i {
+.notification-icon {
   position: relative;
-  right: 2em;
+}
+.notification-icon i {
+  position: relative;
   font-size: 25px;
   transform: rotate(-45deg);
   cursor: pointer;
 }
-.notification .notification-icon .unread,
-.notification .notification-modal .unread {
+.notification-icon .unread,
+.notification-modal .unread {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21624,10 +21791,10 @@ section.shop {
   font-weight: bold;
   z-index: 2;
 }
-.notification .notification-icon .unread {
+.notification-icon .unread {
   position: absolute;
-  top: 1.8em;
-  right: 4em;
+  top: -0.3em;
+  right: 0;
 }
 .notification-modal {
   display: none;
@@ -21727,6 +21894,15 @@ section.shop {
   background: #fff;
   -webkit-box-shadow: 0 3px 15px 2px rgba(0, 0, 0, 0.04);
   box-shadow: 0 3px 15px 2px rgba(0, 0, 0, 0.04);
+}
+@media only screen and (min-width: 576px) {
+  .notification-icon i {
+    right: 2em;
+  }
+  .notification-icon .unread {
+    top: -0.5em;
+    right: 4em;
+  }
 }
 @media only screen and (min-width: 992px) {
   .shop-aside {
