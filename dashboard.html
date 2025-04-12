@@ -56,6 +56,10 @@
 						<use xlink:href="#close"></use>
 					</svg></span>
 					<div class="aside-dropdown__item d-lg-none d-block">
+						<a href="#" class="create-plus__con mb-5">
+							<i class="fa fa-plus create-plus"></i>
+							<span class="create-text">Request Fund</span>
+						</a>
 						<ul class="aside-menu">
 							<li class="aside-menu__item"><a class="aside-menu__link" href="dashboard.html"><span>Dashboard</span></a>
 							</li>
@@ -69,14 +73,17 @@
 				</div>
 			</div>
 			<!-- aside dropdown end-->
-      <!-- header starts -->
+      <!-- mobile header starts -->
 			<header class="header header--front_2">
 				<div class="container-fluid d-sm-none">
 					<div class="row no-gutters justify-content-between">
 						<div class="col-auto d-flex align-items-center header-logo__left">
 							<div class="header-logo"><a class="header-logo__link" href="/"><img class="header-logo__img" src="img/logo_dark.png" alt="mofa foundation"/></a></div>
 						</div>
-						<div class="col-auto d-flex align-items-center">			
+						<div class="col-auto d-flex align-items-center gap-1">
+							<div class="notification-icon">
+								<i class="fa fa-bell-o"></i><span class="unread"></span>
+							</div>	
 							<div class="dropdown-trigger d-block d-sm-none">
 								<div class="dropdown-trigger__item"></div>
 							</div>
@@ -84,19 +91,17 @@
 					</div>
 				</div>
 			</header>
-      <!-- header ends -->
+      <!-- mobile header ends -->
 			<main class="d-sm-flex">
 				<!-- Aside header starts -->
 				<section class="aside-dashboard">
 					<div class="header-logo dashboard-logo">
 						<a class="header-logo__link" href="/"><img class="header-logo__img" src="img/logo_dark.png" alt="mofa foundation"/></a>
 					</div>
-					<div>
-						<a href="#" class="create-plus__con">
-							<i class="fa fa-plus create-plus"></i>
-							<span class="create-text">Request Fund</span>
-						</a>
-					</div>
+					<a href="#" class="create-plus__con">
+						<i class="fa fa-plus create-plus"></i>
+						<span class="create-text">Request Fund</span>
+					</a>
 					<div class="flex-col">
 						<nav class="dashboard-nav">
 							<a href="#" class="nav-item active">
@@ -126,7 +131,7 @@
 				<section class="dashboard-content mb-5">
 					<div class="container pl-4 pr-4">
 						<!-- notification start -->
-						<div class="notification">
+						<div class="notification d-sm-flex">
 							<section class="notification-icon">
 								<i class="fa fa-bell-o"></i><span class="unread"></span>
 							</section>
@@ -162,18 +167,23 @@
 							<p class="title"><strong>Overview</strong></p>
 							<section class="overview__container">
 								<div class="overview__mobile-toggle">
-									<div class="overview-icon active" data-category="current-request"><i class="fa fa-inbox"></i></div>
-									<div class="overview-icon" data-category="total-applications"><i class="fa fa-file"></i></div>
-									<div class="overview-icon" data-category="total-funds"><i class="fa fa-coins"></i></div>
+									<div class="overview-icon active" data-category="current-requests"><img src="img/svg/icons_5/wallet.svg" alt="currrent requests"/></div>
+									<div class="overview-icon" data-category="total-applications"><img src="img/svg/icons_5/file-solid.svg" alt="total applications"/></div>
+									<div class="overview-icon" data-category="total-funds"><img src="img/svg/icons_5/bank.svg" alt="total funds"/></div>
 								</div>
-								<div class="overview__items mt-5 mb-5">
+								<div class="overview__items sm-mt-5 mb-5">
 									<div class="data-box" id="total-funds">
 										<div class="stats">
 											<section class="header">
-												<p>Total Funds</p>
+												<p>Total Funds <i class="fa fa-info-circle" aria-hidden="true" id="funds-info"></i></p>
 												<span class="total size">0</span>
 											</section>
-											<section class="body">
+											<!-- tooltip Container -->
+											<div class="info-tooltip" id="funds-tooltip">
+												<span class="close-btn" id="close-tooltip">&times;</span>
+												<p>This is the total funds you have requested including the total approved, pending and denied funds.</p>
+											</div>
+											<section class="body flex-sm-column flex-lg-row">
 												<div class="content">
 													<p>Approved</p>
 													<span class="approved size text-green">0</span>
@@ -192,10 +202,15 @@
 									<div class="data-box" id="total-applications">
 										<div class="stats">
 											<section class="header">
-												<p>Total Applications</p>
+												<p>Total Applications <i class="fa fa-info-circle" aria-hidden="true" id="app-info"></i></p>
 												<span class="total size">0</span>
 											</section>
-											<section class="body">
+											<!-- tooltip Container -->
+											<div class="info-tooltip" id="app-tooltip">
+												<span class="close-btn" id="close-tooltip">&times;</span>
+												<p>This is the total applications you have made including the total approved, pending and denied applications.</p>
+											</div>
+											<section class="body flex-sm-column flex-lg-row">
 												<div class="content">
 													<p>Approved</p>
 													<span class="approved size text-green">0</span>
@@ -214,10 +229,15 @@
 									<div class="data-box active" id="current-requests">
 										<div class="stats">
 											<section class="header">
-												<p>Current Requests</p>
+												<p>Current Requests <i class="fa fa-info-circle" aria-hidden="true" id="current-info"></i></p>
 												<span class="total size">0</span>
 											</section>
-											<section class="body">
+												<!-- tooltip Container -->
+												<div class="info-tooltip" id="current-tooltip">
+													<span class="close-btn" id="close-tooltip">&times;</span>
+													<p>This is the total active requests you have recently made including the current approved, pending and denied requests.</p>
+												</div>
+											<section class="body flex-sm-column flex-lg-row">
 												<div class="content">
 													<p>Approved</p>
 													<span class="approved size text-green">0</span>
@@ -244,18 +264,18 @@
 									<thead class="table-dark">
 										<tr>
 											<th class="">
-												<span class="overline-title">Applicatiion Id</span>
+												<span class="overline-title">Id</span>
 											</th>
 											<th class="">
 												<span class="overline-title">Name</span>
 											</th>
-											<th class="">
+											<th class="table-heading">
 												<span class="overline-title">Amount</span>
 											</th>
 											<th class="">
 												<span class="overline-title">Status</span>
 											</th>
-											<th class="">
+											<th class="table-heading">
 												<span class="overline-title">Date</span>
 											</th>
 										</tr>
@@ -271,7 +291,7 @@
 							<div class="slider-arrow left"><i class="fa fa-angle-left"></i></div>
 							<div class="slider-arrow right"><i class="fa fa-angle-right"></i></div>
 							<section class="slider__container">
-								<div class="slider-track">
+								<div class="slider-track d-flex">
 								</div>
 							</section>
 						</div>
