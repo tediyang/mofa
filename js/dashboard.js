@@ -279,70 +279,191 @@ $((function() {
     });
   }
 
+/**
+ * Initializes a tooltip for a given icon element.
+ *
+ * This function sets up click event handlers to toggle the visibility of a tooltip
+ * when the associated icon is clicked. It also handles closing the tooltip when the
+ * close button inside the tooltip or an area outside the tooltip is clicked.
+ *
+ * @param {jQuery} $icon - The jQuery object representing the icon that triggers the tooltip.
+ * @param {string} tooltipId - The ID of the tooltip element to be controlled.
+ *
+ * @return {void}
+ */
+
+  function initializeTooltip($icon, tooltipId) {
+    const $tooltip = $(tooltipId);
+    const $closeBtn = $tooltip.find('.close-btn');
+  
+    // Toggle tooltip visibility
+    $icon.on('click', function(e) {
+      e.stopPropagation();
+      $tooltip.toggleClass('visible');
+      $(this).attr('aria-expanded', $tooltip.hasClass('visible'));
+    });
+  
+    // Close tooltip
+    $closeBtn.on('click', function() {
+      $tooltip.removeClass('visible');
+      $icon.removeAttr('aria-expanded');
+    });
+  
+    // Handle click outside
+    $(document).on('click', function(e) {
+      if (!$tooltip.is(e.target) && 
+          $tooltip.has(e.target).length === 0 && 
+          !$icon.is(e.target)) {
+        $tooltip.removeClass('visible');
+        $icon.removeAttr('aria-expanded');
+      }
+    });
+  };
+
   /**
-   * Display a slider of campaigns.
+   * Sets up the campaign slider.
    *
-   * If there are 3 or fewer items, the left and right arrow buttons will be
-   * hidden. Otherwise, they will be shown and the slider will be enabled.
+   * This function sets up the campaign slider. It first checks the window size and
+   * sets the number of items to show in the slider. It then generates the HTML for
+   * each campaign and adds it to the slider track. It then sets up the arrow events
+   * and updates the arrow visibility based on the current index. It also handles
+   * window resize and updates the slider position accordingly.
    *
-   * @return {void}
+   * @private
    */
   function displayCampaignSlider() {
+    const $window = $(window);
     const campaigns = recentCampaigns();
     const $track = $('.slider-track');
     const totalItems = campaigns.length;
     const $arrowLeft = $('.slider-arrow.left');
     const $arrowRight = $('.slider-arrow.right');
+    let touchStartX = 0;
+    let isDragging = false;
+    let dragDistance = 0;
     let currentIndex = 0;
+    let size = 1;
     let html = '';
 
-    // Hide arrows if 3 or fewer items
-    if (totalItems <= 3) {
-      $arrowLeft.add($arrowRight).hide();
+    function resetSliderPosition() {
+      currentIndex = 0;
+      $track.css('transform', 'translateX(0)');
+      updateArrows();
+    }
+
+    function checkMobile() {
+      if ($window.width() <= 576) { // Mobile breakpoint
+        size = 1;
+      } else if ($window.width() <= 767) {
+        size = 2
+      } else {
+        size = 3
+      }
+
+      // Reset position on resize
+      resetSliderPosition();
     }
 
     function updateArrows() {
-      $arrowLeft.toggleClass('none', currentIndex === 0);
-      $arrowRight.toggleClass('none', currentIndex >= totalItems - 3);
+      $arrowLeft.toggleClass('none', currentIndex === 0 || campaigns.length === 0);
+      $arrowRight.toggleClass('none', currentIndex >= totalItems - size || campaigns.length === 0);
     }
 
-    $.each(campaigns, function(index, campaign) {
-      html += `
-        <div class="slider-item" style="
-          background-image: url('img/${campaign.image}');
-          background-size: cover;
-          background-position: center;
+    if (campaigns.length === 0) {
+      html = `
+        <div class="slider-item d-flex flex-column justify-content-between" style="
           box-sizing: border-box;
+          min-height: auto;
+          text-align: center;
+          width: 100%;
         ">
-          <h4 class="p-3" style="color: #fff;">${campaign.title}</h4>
-          <div class="slider-cover">
-            <p class="slider-text">${campaign.description}</p>
-            <a href="events.html#" class="btn btn-slider">
-              <span class="">View</span>
-            </a>
-          </div>
+          <p class="p-3" style="color: #212529;">No recent campaigns</p>
         </div>
       `
-    });
+    } else {
+      $.each(campaigns, function(index, campaign) {
+        html += `
+          <div class="slider-item d-flex flex-column justify-content-between" style="
+            background-image: url('img/${campaign.image}');
+            background-size: cover;
+            background-position: center;
+            box-sizing: border-box;
+            min-height: 25rem;
+          ">
+            <h4 class="p-3" style="color: #fff;">${campaign.title}</h4>
+            <div class="slider-cover d-flex flex-column justify-content-between">
+              <p class="slider-text">${campaign.description}</p>
+              <a href="events.html#" class="btn btn-slider">
+                <span class="">View</span>
+              </a>
+            </div>
+          </div>
+        `
+      });
+    }
     $track.html(html);
+
+    // Handle touch events
+    $track.on('touchstart', function(e) {
+      touchStartX = e.originalEvent.touches[0].clientX;
+      isDragging = true;
+      $track.css('transition', 'none');
+    });
+
+    $track.on('touchmove', function(e) {
+      if (!isDragging) return;
+      const touchCurrentX = e.originalEvent.touches[0].clientX;
+      dragDistance = touchCurrentX - touchStartX;
+      
+      const currentTransform = -currentIndex * (100 / size);
+      $track.css('transform', `translateX(calc(${currentTransform}% + ${dragDistance}px))`);
+    });
+
+    $track.on('touchend', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      $track.css('transition', 'transform 0.3s ease-in-out');
+
+      // Determine if swipe threshold was passed
+      if (Math.abs(dragDistance) > 50) {
+        if (dragDistance < 0) { // Swipe left
+          $arrowRight.trigger('click');
+        } else { // Swipe right
+          $arrowLeft.trigger('click');
+        }
+      } else {
+        // Return to original position
+        $track.css('transform', `translateX(-${currentIndex * (100 / size)}%)`);
+      }
+      dragDistance = 0;
+    });
 
     $arrowLeft.on('click', function() {
       if (!$(this).hasClass('disabled')) {
         currentIndex = Math.max(0, currentIndex - 1);
-        $track.css('transform', `translateX(-${currentIndex * (100 / 3)}%)`);
+        $track.css('transform', `translateX(-${currentIndex * (100 / size)}%)`);
         updateArrows();
       }
     });
 
     $arrowRight.on('click', function() {
       if (!$(this).hasClass('disabled')) {
-        currentIndex = Math.min(totalItems - 3, currentIndex + 1);
-        $track.css('transform', `translateX(-${currentIndex * (100 / 3)}%)`);
+        currentIndex = Math.min(totalItems - size, currentIndex + 1);
+        console.log(size);
+        $track.css('transform', `translateX(-${currentIndex * (100 / size)}%)`);
         updateArrows();
       }
     });
 
+    checkMobile();
     updateArrows();
+
+    // Handle window resize
+    let resizeTimer;
+    $window.on('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(checkMobile, 250);
+    });
   }
 
   /**
@@ -351,17 +472,30 @@ $((function() {
    * @return {void}
    */
   function displayBenefeciaryDashboard() {
-    toggleDashboard(); // tablet view aside dashboard
-    displayNotifications(); // notification
+    const $fundsIcon = $('#funds-info');
+    const $appIcon = $('#app-info');
+    const $currIcon = $('#current-info');
+    let html = '';
     const beneficiary = fetchBeneficiary();
     const requests = recentRequests();
+    toggleDashboard(); // tablet view aside dashboard
+    displayNotifications(); // notification
     displayCampaignSlider(); // Display campaign slider
-    let html = '';
 
     $('.benefactor-name').text(`${beneficiary.firstName} ${beneficiary.lastName}`);
     $('.benefactor-avatar').html(
       `<img class="img--avatar" src="img/svg/avatar/${beneficiary.profileAvatar}" alt="${beneficiary.firstName} ${beneficiary.lastName}">`
     );
+
+    // Mobile: Handle click event on overview icons
+    $('.overview-icon').click(function() {
+      // Remove active class from all icons and data boxes
+      $('.overview-icon, .data-box').removeClass('active');
+
+      $(this).addClass('active');
+      const category = $(this).data('category');
+      $(`#${category}`).addClass('active'); // add active class
+    });
 
     // Populate data into boxes
     $.each(beneficiary.finances, function(category, data) {
@@ -374,28 +508,42 @@ $((function() {
       $box.find('.pending').text(`${prefix}${formatNumber(data.pending)}`);
     });
 
+    // Initialize tooltips for each icon
+    initializeTooltip($fundsIcon, '#funds-tooltip');
+    initializeTooltip($appIcon, '#app-tooltip');
+    initializeTooltip($currIcon, '#current-tooltip');
+
     // Populate recent requests
-    $.each(requests, function(index, request) {
-      const status = request.status.toLowerCase();
-      html += `
+    if (requests.length === 0) {
+      html = `
         <tr>
-          <td class="table-col-id">
-            <span class="sub-text text-mofa"><a href="#">${request.id}</a></span>
+          <td colspan="5" class="table-col-id empty text-center">
+            <span class="sub-text text-mofa">No recent requests</span>
           </td>
-          <td class="table-col-name">
-            <span class="sub-text">${request.name}</span>
-          </td>
-          <td class="table-col-amount">
-            <span class="sub-text">₦${formatNumber(request.amount)}</span>
-          </td>
-          <td class="table-col-status">
-            <span class="sub-text ${status === 'approved' ? 'text-green' : status === 'denied' ? 'text-red' : ''}">${request.status}</span>
-          </td>
-          <td class="table-col-date">
-            <span class="sub-text">${formatDate(request.createdOn)}</span>
-          </td>
-        </tr>`
-    });
+        </tr>`;
+    } else {
+      $.each(requests, function(index, request) {
+        const status = request.status.toLowerCase();
+        html += `
+          <tr>
+            <td class="table-col-id">
+              <span class="sub-text text-mofa"><a href="#">${request.id}</a></span>
+            </td>
+            <td class="table-col-name">
+              <span class="sub-text">${request.name}</span>
+            </td>
+            <td class="table-col-amount table-body">
+              <span class="sub-text">₦${formatNumber(request.amount)}</span>
+            </td>
+            <td class="table-b-right table-col-status">
+              <span class="sub-text ${status === 'approved' ? 'text-green' : status === 'denied' ? 'text-red' : ''}">${request.status}</span>
+            </td>
+            <td class=" table-col-date table-body">
+              <span class="sub-text">${formatDate(request.createdOn)}</span>
+            </td>
+          </tr>`
+      });
+    }
     $(".table__body").html(html);
   }
 
