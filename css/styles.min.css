@@ -21828,7 +21828,7 @@ section.shop {
     flex: 0 0 48%;
   }
   .nav-fixed {
-    top: 1rem;
+    top: 0;
     left: 14%;
     width: 85%;
   }
