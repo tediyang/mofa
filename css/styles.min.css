@@ -4918,8 +4918,11 @@ input[type="submit"].btn-block {
   transition: color .3s;
 }
 .data-value {
-  color: #526484;
+  color: #000000;
   font-size: 12px;
+}
+.data-value.lock {
+  color: #00000080 !important;
 }
 .data-more {
   position: relative;
@@ -10137,7 +10140,7 @@ a.text-dark:hover {
   color: #6c757d !important;
 }
 .text-black {
-  color: #000000;
+  color: #000000 !important;
 }
 .text-black-50 {
   color: rgba(0, 0, 0, 0.5) !important;
