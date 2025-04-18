@@ -21548,8 +21548,8 @@ section.shop {
   display: none;
   position: relative;
   transform: translateX(75%) translateY(-20%);
-  width: 30px;
-  min-height: 30px;
+  width: 24px;
+  min-height: 24px;
   border-radius: 50%;
   background: var(--mofa-blue);
   color: #fff;
