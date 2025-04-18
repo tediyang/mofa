@@ -1,6 +1,7 @@
 $((function() {
   function formatDOB(dobString) {
-    const [mm, dd, yyyy] = dobString.split('/');
+    const [dd, mm, yyyy] = dobString.split('/');
+  
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return `${dd} ${months[parseInt(mm, 10) - 1]}, ${yyyy}`;
