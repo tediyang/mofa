@@ -21602,7 +21602,9 @@ section.shop {
 .dashboard-content {
   margin-top: 5rem;
 }
-.applications-content {
+.applications-content,
+.profile-content,
+.settings-content {
   font-size: 12px;
   margin-top: 3rem;
 }
@@ -21981,7 +21983,8 @@ section.shop {
   }
   .dashboard-content,
   .applications-content,
-  .profile-content {
+  .profile-content,
+  .settings-content {
     position: relative;
     margin-top: 0;
     margin-left: 6rem;
@@ -22038,7 +22041,8 @@ section.shop {
 @media only screen and (min-width: 576px) and (max-width: 767.98px) {
   .dashboard-content .container,
   .applications-content .container,
-  .profile-content .container {
+  .profile-content .container,
+  .settings-content .container {
     max-width: 650px !important;
   }
   .slider-item {
@@ -22094,7 +22098,8 @@ section.shop {
   }
   .dashboard-content .container,
   .applications-content .container,
-  .profile-content .container {
+  .profile-content .container,
+  .settings-content .container {
     max-width: 991px !important;
   }
   .overview__items .data-box {
@@ -24672,6 +24677,23 @@ label {
   width: calc(1rem + 24px);
   height: calc(2.125rem + 2px);
 }
+.settings .form-icon {
+  top: -2.8em;
+}
 .form-note-s2 {
   font-size: 14px;
+}
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+.move {
+  transform: translateX(-1em);
+  transition: transform 0.1s ease;
 }
