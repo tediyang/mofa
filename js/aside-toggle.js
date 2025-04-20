@@ -20,21 +20,21 @@ $((function() {
       {
         id: "00002",
         applicationId: "00001",
-        applicationStatus: "Approved",
+        message: "Your application 00001 has been approved.",
         createdOn: "15/03/2025",
         status: "unread",
       },
       {
         id: "00003",
         applicationId: "00002",
-        applicationStatus: "Denied",
+        message: "Sorry, your application 00003 has been denied.",
         createdOn: "10/03/2025",
         status: "unread",
       },
       {
         id: "00004",
         applicationId: "00003",
-        applicationStatus: "Pending",
+        message: "Your application 00003 has been created, pending for review.",
         createdOn: "05/03/2025",
         status: "read",
       }
@@ -77,15 +77,11 @@ $((function() {
     if ($unread > 0) {
       $('.unread').text($unread);
       $.each($notifications, function(index, notification) {
-        message = notification.applicationStatus === 'Approved' ? `Your Application <a href="#">${notification.applicationId}</a> has been approved.`
-          : notification.applicationStatus === 'Denied' ? `Sorry, your recent Application <a href="#">${notification.applicationId}</a> has been denied.`
-          : `Your Application <a href="#">${notification.applicationId}</a> has been created, pending for review.`
         html += `
-          <div class="message">
+          <div class="message" data-application-id="${notification.applicationId ?? ''}">
             <div class="message-icon ${notification.status === 'unread' && 'active'}"><img src="img/svg/icons_5/message.svg" alt="message-icon"/></div>
             <div class="content">
-              <h6>${notification.applicationStatus}</h6>
-              <p class="mb-2">${message}</p>
+              <p class="mb-2">${notification.message}</p>
               <div>5 mins ago</div>
             </div>
           </div>
@@ -103,6 +99,14 @@ $((function() {
     }
 
     $('.notification-modal__body').html(html);
+
+    $('.notification-modal__body').on('click', '.message', function() {
+      const applicationId = $(this).data('applicationId'); // Get ID from data attribute
+      if (!applicationId) return; // Exit if no ID found i.e notification is not related to an application
+
+      // Redirect to the application detail page
+      window.location.href = `application-detail.html?id=${applicationId}`;
+    });
 
     // handle notification modal display
     $('.notification-icon').on('click', () => {

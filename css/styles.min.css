@@ -4394,7 +4394,7 @@ input[type="submit"].btn-block {
 .nav-fixed {
   position: fixed;
   background: #FFFFFF;
-  z-index: 1;
+  z-index: 5;
 }
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,
@@ -22007,6 +22007,29 @@ section.shop {
   border-radius: 25px;
   font-size: 12px;
 }
+.applications-item .options {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 0.7em;
+  height: 26px;
+  width: 26px;
+  min-height: 26px;
+  min-width: 26px;
+  font-weight: 700;
+  background: #FFFFFF;
+  border: 1px solid black;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.applications-item:hover .options {
+  opacity: 1;
+  visibility: visible;
+}
 .applications-item .mofa {
   padding: 2px 4px;
   border-radius: 50%;
@@ -22044,6 +22067,51 @@ section.shop {
 }
 .applications .loading.show {
   display: block;
+}
+.notification-popup {
+  position: absolute;
+  right: 30px;
+  top: 35px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  width: 160px;
+}
+.notification-popup.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.popup-option {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #050505;
+  transition: background 0.2s ease;
+}
+.popup-option:hover {
+  background: #f5f6f7;
+}
+.delete-option:hover {
+  color: #e41e3f;
+}
+.options {
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+.options::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 16a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0-6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0-6a2 2 0 1 1 0 4 2 2 0 0 1 0-4z' fill=''/%3E%3C/svg%3E") center no-repeat;
 }
 /* Show toggle only on tablet (576px-1024px) */
 @media (min-width: 576px) and (max-width: 1023px) {
@@ -22504,6 +22572,7 @@ section.shop {
   line-height: 1.5em;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #00000066;
+  cursor: pointer;
 }
 .notification-modal__body .message .message-icon {
   position: relative;
@@ -22512,6 +22581,7 @@ section.shop {
 .notification-modal__body .message .message-icon img {
   width: 24px;
 }
+.applications-item .message-icon.active::before,
 .notification-modal__body .message .message-icon.active::before {
   content: "";
   position: absolute;
