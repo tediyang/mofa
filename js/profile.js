@@ -168,7 +168,7 @@ $((function() {
     } else if (beneficiary.status === 'pending') {
       $('.kyc').html(`<p class="status pending text-white m-0"><i class="fa fa-check"></i></p>`)
     } else {
-      $('.kyc').html(`<a href="#" class="kyc-link link link-primary">Setup</a>`);
+      $('.kyc').html(`<a href="kyc-application.html" class="kyc-link link link-primary">Setup</a>`);
     }
 
     // Handle modal popup
