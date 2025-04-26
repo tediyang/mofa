@@ -4394,7 +4394,10 @@ input[type="submit"].btn-block {
 .nav-fixed {
   position: fixed;
   background: #FFFFFF;
-  z-index: 5;
+  z-index: 2;
+}
+.notification-nav {
+  width: 100%;
 }
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,
@@ -4526,6 +4529,9 @@ input[type="submit"].btn-block {
     top: 0;
     left: 9%;
     width: 90%;
+  }
+  .notification-nav {
+    width: 50%;
   }
 }
 @media (max-width: 991.98px) {
@@ -5294,6 +5300,14 @@ input[type="submit"].btn-block {
   .kyc-app-text p,
   .kyc-app-action a {
     font-size: 14px;;
+  }
+  .applications-item .options {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  .applications-item:hover .options {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 .accordion > .card {
@@ -22021,14 +22035,10 @@ section.shop {
   background: #FFFFFF;
   border: 1px solid black;
   border-radius: 50%;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
-.applications-item:hover .options {
   opacity: 1;
   visibility: visible;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
 }
 .applications-item .mofa {
   padding: 2px 4px;
@@ -22068,7 +22078,7 @@ section.shop {
 .applications .loading.show {
   display: block;
 }
-.notification-popup {
+.applications-item .notification-popup {
   position: absolute;
   right: 30px;
   top: 35px;
@@ -22083,6 +22093,9 @@ section.shop {
   transition: all 0.2s ease;
   width: 160px;
 }
+.notifications {
+  margin-top: 10rem;
+}
 .notification-popup.show {
   opacity: 1;
   visibility: visible;
@@ -22093,7 +22106,6 @@ section.shop {
   font-size: 14px;
   cursor: pointer;
   color: #050505;
-  transition: background 0.2s ease;
 }
 .popup-option:hover {
   background: #f5f6f7;
@@ -22270,6 +22282,9 @@ section.shop {
   .dashboard-requests .title::before,
   .dashboard-campaigns .title::before {
     left: 35%;
+  }
+  .notifications {
+    margin-top: 8rem;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767.98px) {
@@ -22591,7 +22606,7 @@ section.shop {
   height: 10px;
   border-radius: 50%;
   background: #ff4757;
-  z-index: 3;
+  z-index: 1;
 }
 .notification-modal__footer {
   display: flex;
