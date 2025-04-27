@@ -115,8 +115,13 @@ $((function() {
     $('.notification-modal .close').on('click', () => {
       $('.notification-modal').removeClass('active');
     });
+
+    //handle notification for mobile
+    $('.mobile.notification-icon').on('click', () => {
+      link = "notifications.html";
+      window.location.href = link;
+    });
   }
-  
 
   toggleDashboard();
   displayNotifications();
