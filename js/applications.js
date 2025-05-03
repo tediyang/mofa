@@ -466,7 +466,7 @@ $((function() {
           </div>
           <div class="footer d-flex justify-content-between align-items-center border-top h-2">
             <p class="mt-0 mb-0">${formatDate(application.createdOn)}</p>
-            <a href="#" class="text-decoration-none text-mofa">View <i class="fa fa-angle-right"></i></a>
+            <a href="application-details.html?id=${application.id}" class="text-decoration-none text-mofa">View <i class="fa fa-angle-right"></i></a>
           </div>
         </div>
       `
