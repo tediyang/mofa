@@ -145,6 +145,7 @@ $((function() {
             <div class="footer d-flex justify-content-between align-items-center pl-3 pr-3 border-top h-2">
               <p class="mt-0 mb-0">${formatDate(notification.createdOn)}</p>
               <a href="#" class="text-decoration-none text-mofa ${!notification.applicationId && 'd-none'}">View <i class="fa fa-angle-right"></i></a>
+              <a href="#" class="text-decoration-none text-mofa ${notification.applicationId && 'd-none'}">Mark as read</a>
             </div>
           </div>
         `
