@@ -1879,6 +1879,9 @@ pre code {
 .table-whitesmoke thead th {
   border-color: #e3e3e3;
 }
+.table-mofa {
+  color: #fff;
+}
 .table-mofa,
 .table-mofa > td,
 .table-mofa > th {
@@ -1951,8 +1954,20 @@ pre code {
 .table-col-date {
   border-bottom: 1px solid #e3e3e3;
 }
+.table-col-name {
+  border-left: 1px solid #e3e3e3;
+}
 .table-col-id.empty {
   border-right: 1px solid #e3e3e3;
+}
+.table-col-action {
+  border: none !important;
+  right: -0.5em;
+  top: 0.1em;
+}
+.sub-text {
+  display: block;
+  width: 70% !important;
 }
 @media (max-width: 330px) {
   .applications-card {
@@ -4618,6 +4633,12 @@ input[type="submit"].btn-block {
   .notification-nav {
     width: 50%;
   }
+  .table-col-name {
+    border-left: 0;
+  }
+  .table-col-action {
+    right: 0;
+  }
 }
 @media (max-width: 991.98px) {
   .navbar-expand-lg > .container,
@@ -4663,6 +4684,9 @@ input[type="submit"].btn-block {
   }
   .navbar-expand-lg .navbar-toggler {
     display: none;
+  }
+  .table-col-action {
+    right: 2em;
   }
 }
 @media (max-width: 1199.98px) {
@@ -21818,11 +21842,15 @@ section.shop {
 .dashboard-logo {
   padding: 12px 15px;
 }
-.dashboard-nav {
+.dashboard-nav,
+.dashboard-nav__admin {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 20px 0;
+}
+.dashboard-nav__admin {
+  gap: 0.3rem;
 }
 .nav-item {
   display: flex;
@@ -21981,12 +22009,14 @@ section.shop {
 }
 .dashboard-overview .title,
 .dashboard-requests .title,
+.dashboard-fundings .title,
 .dashboard-campaigns,
 .dashboard-campaigns .title {
   position: relative;
 }
 .dashboard-overview .title::after,
 .dashboard-requests .title::after,
+.dashboard-fundings .title::after,
 .dashboard-campaigns .title::after {
   content: "";
   position: absolute;
@@ -22004,6 +22034,7 @@ section.shop {
 }
 .dashboard-overview .title::before,
 .dashboard-requests .title::before,
+.dashboard-fundings .title::before,
 .dashboard-campaigns .title::before {
   content: "";
   position: absolute;
@@ -22473,11 +22504,13 @@ section.shop {
   }
   .dashboard-overview .title::after,
   .dashboard-requests .title::after,
+  .dashboard-fundings .title::after,
   .dashboard-campaigns .title::after {
     width: 35%;
   }
   .dashboard-overview .title::before,
   .dashboard-requests .title::before,
+  .dashboard-fundings .title::before,
   .dashboard-campaigns .title::before {
     left: 35%;
   }
@@ -22510,6 +22543,7 @@ section.shop {
   .benefactor__wrapper,
   .dashboard-overview,
   .dashboard-requests,
+  .dashboard-fundings,
   .dashboard-campaigns {
     font-size: 12px !important;
   }
@@ -24960,6 +24994,11 @@ section.shop {
   .lottie-none {
     display: none !important;
   }
+  .campaign-dropdown-menu,
+  .blog-dropdown-menu
+  {
+    left: calc(4rem + 4px) !important;
+  }
 }
 
 /* Custom */
@@ -25167,4 +25206,70 @@ label {
 .move {
   transform: translateX(-1em);
   transition: transform 0.1s ease;
+}
+
+/* ADMIN */
+.campaign-arrow .fa,
+.blog-arrow .fa {
+  font-size: 0.8em;
+  transition: opacity 0.2s ease-in-out;
+}
+.campaign-arrow .arrow-down,
+.blog-arrow .arrow-down {
+  display: none !important;
+}
+.campaign-arrow .arrow-right,
+.blog-arrow .arrow-right {
+  display: inline-block !important;
+}
+.nav-item.open .campaign-arrow .arrow-down,
+.nav-item.open .blog-arrow .arrow-down
+{
+  display: inline-block !important;
+}
+.nav-item.open .campaign-arrow .arrow-right,
+.nav-item.open .blog-arrow .arrow-right
+{
+  display: none !important;
+}
+.campaign-dropdown-menu,
+.blog-dropdown-menu
+{
+  position: relative;
+  left: calc(5rem - 4px);
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 5px;
+  display: none;
+}
+.campaign-dropdown-menu li:hover,
+.blog-dropdown-menu li:hover {
+  color: var(--mofa-blue);
+}
+.campaign-dropdown-menu li:first-child,
+.blog-dropdown-menu li:first-child {
+  margin-bottom: 1rem;
+}
+.admin-display {
+  background: var(--mofa-blue);
+  color: #FFFFFF;
+  padding: 0 10px;
+  border-radius: 15px;
+}
+.no-click {
+  pointer-events: none !important;
+  cursor: none !important;
+}
+.admin-overview .header {
+  background: var(--mofa-blue);
+  color: var(--white);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.see-all:hover {
+  color: #0056b3;
+}
+.see-all .fa {
+  font-size: 0.8em;
+  font-weight: 400;
 }
