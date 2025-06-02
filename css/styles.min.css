@@ -5568,7 +5568,7 @@ input[type="submit"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: var(--mofa-blue);
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
@@ -5604,7 +5604,7 @@ input[type="submit"].btn-block {
   color: #6c757d;
   pointer-events: none;
   cursor: auto;
-  background-color: #fff;
+  background-color: #FFFFFF80;
   border-color: #dee2e6;
 }
 .pagination-lg .page-link {
@@ -22296,6 +22296,11 @@ section.shop {
 .applications .loading.show {
   display: block;
 }
+.applications-admin {
+  background: #F5F5F5;
+  padding: 1rem 0;
+  border-radius: 12px;
+}
 .applications-item .notification-popup {
   position: absolute;
   right: 30px;
@@ -22544,7 +22549,8 @@ section.shop {
   .dashboard-overview,
   .dashboard-requests,
   .dashboard-fundings,
-  .dashboard-campaigns {
+  .dashboard-campaigns,
+  .applications-admin {
     font-size: 12px !important;
   }
   .benefactor-name {
@@ -25272,4 +25278,49 @@ label {
 .see-all .fa {
   font-size: 0.8em;
   font-weight: 400;
+}
+/* ADMIN APPLICATIONS */
+.applications-admin .search {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  width: 200px;
+}
+.applications-admin .search:focus-visible {
+  border: 1px solid var(--mofa-blue) !important;
+  outline: none !important;
+}
+.applications-admin .month-select, .year-select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+}
+.applications-admin .submit-btn,
+.applications-admin .search-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--mofa-blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.applications-admin .submit-btn {
+  border-radius: 4px;
+}
+.applications-admin .search-btn {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.applications-admin .submit-btn:hover,
+.applications-admin .search-btn:hover {
+  background-color: #0056b3;
+}
+.total-count,
+.page-count {
+  font-weight: bold;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
