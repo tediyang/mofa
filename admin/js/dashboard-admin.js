@@ -453,7 +453,7 @@ $(function () {
           </td>
         </tr>`;
     } else {
-      $.each(requests, function (index, request) {
+      $.each(requests.slice(0, 5), function (index, request) {
         const status = request.status.toLowerCase();
         htmlRequests += `
           <tr class="position-relative">
@@ -511,7 +511,7 @@ $(function () {
           </td>
         </tr>`;
     } else {
-      $.each(fundings, function (index, funding) {
+      $.each(fundings.slice(0, 5), function (index, funding) {
         const status = funding.status.toLowerCase();
         htmlFundings += `
           <tr class="position-relative">
