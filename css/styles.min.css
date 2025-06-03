@@ -22296,7 +22296,8 @@ section.shop {
 .applications .loading.show {
   display: block;
 }
-.applications-admin {
+.applications-admin,
+.fundings-admin {
   background: #F5F5F5;
   padding: 1rem 0;
   border-radius: 12px;
@@ -22550,7 +22551,8 @@ section.shop {
   .dashboard-requests,
   .dashboard-fundings,
   .dashboard-campaigns,
-  .applications-admin {
+  .applications-admin,
+  .fundings-admin {
     font-size: 12px !important;
   }
   .benefactor-name {
