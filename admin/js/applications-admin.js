@@ -448,7 +448,7 @@ $((function() {
         htmlApplications = `
           <tr>
             <td colspan="5" class="table-col-id empty text-center">
-              <span class="sub-text text-mofa">No Applications</span>
+              <span class="text-mofa">No Applications</span>
             </td>
           </tr>`;
       } else {
@@ -627,7 +627,7 @@ $((function() {
       const totalPages = applications.totalPages;
 
       $('#totalCount').text(`${applications.totalItems} items`);
-      $('#pageCount').text(`${applications.currentPage} of ${totalPages}`);
+      $('#pageCount').text(`${totalPages === 0 ? 0 : applications.currentPage} of ${totalPages}`);
       
       // Update prev/next button states
       $('#firstPage').toggleClass('disabled', applications.currentPage === 1);
