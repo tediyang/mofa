@@ -25279,19 +25279,23 @@ label {
   font-size: 0.8em;
   font-weight: 400;
 }
-/* ADMIN APPLICATIONS */
-.applications-admin .search {
+/* ADMIN APPLICATIONS AND FUNDINGS */
+.applications-admin .search,
+.fundings-admin .search {
   padding: 0.4rem;
   border: 1px solid #ccc;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   width: 200px;
 }
-.applications-admin .search:focus-visible {
+.applications-admin .search:focus-visible,
+.fundings-admin .search:focus-visible {
   border: 1px solid var(--mofa-blue) !important;
   outline: none !important;
 }
-.applications-admin .month-select, .year-select {
+.applications-admin .month-select, 
+.fundings-admin .month-select, 
+.year-select {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -25300,22 +25304,28 @@ label {
   cursor: pointer;
 }
 .applications-admin .submit-btn,
-.applications-admin .search-btn {
+.applications-admin .search-btn,
+.fundings-admin .submit-btn,
+.fundings-admin .search-btn {
   padding: 0.5rem 1rem;
   background-color: var(--mofa-blue);
   color: white;
   border: none;
   cursor: pointer;
 }
-.applications-admin .submit-btn {
+.applications-admin .submit-btn,
+.fundings-admin .submit-btn {
   border-radius: 4px;
 }
-.applications-admin .search-btn {
+.applications-admin .search-btn,
+.fundings-admin .search-btn {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 .applications-admin .submit-btn:hover,
-.applications-admin .search-btn:hover {
+.applications-admin .search-btn:hover,
+.fundings-admin .submit-btn:hover,
+.fundings-admin .search-btn:hover {
   background-color: #0056b3;
 }
 .total-count,
