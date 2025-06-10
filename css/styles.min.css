@@ -22288,6 +22288,11 @@ section.shop {
   background: var(--gray);
   padding: 1px 5px;
 }
+.applications-item .status.deactivated,
+.applications-card .status.deactivated {
+  background: var(--orange);
+  padding: 1px 5px;
+}
 .applications .loading {
   text-align: center;
   padding: 20px;
@@ -22297,10 +22302,14 @@ section.shop {
   display: block;
 }
 .applications-admin,
-.fundings-admin {
+.fundings-admin,
+.users-admin {
   background: #F5F5F5;
   padding: 1rem 0;
   border-radius: 12px;
+}
+.users-admin {
+  background: var(--white);
 }
 .applications-item .notification-popup {
   position: absolute;
@@ -22552,7 +22561,8 @@ section.shop {
   .dashboard-fundings,
   .dashboard-campaigns,
   .applications-admin,
-  .fundings-admin {
+  .fundings-admin,
+  .users-admin {
     font-size: 12px !important;
   }
   .benefactor-name {
@@ -25283,7 +25293,8 @@ label {
 }
 /* ADMIN APPLICATIONS AND FUNDINGS */
 .applications-admin .search,
-.fundings-admin .search {
+.fundings-admin .search,
+.users-admin .search {
   padding: 0.4rem;
   border: 1px solid #ccc;
   border-top-left-radius: 15px;
@@ -25291,12 +25302,14 @@ label {
   width: 200px;
 }
 .applications-admin .search:focus-visible,
-.fundings-admin .search:focus-visible {
+.fundings-admin .search:focus-visible,
+.users-admin .search:focus-visible {
   border: 1px solid var(--mofa-blue) !important;
   outline: none !important;
 }
 .applications-admin .month-select, 
-.fundings-admin .month-select, 
+.fundings-admin .month-select,
+.users-admin .month-select,
 .year-select {
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -25308,7 +25321,9 @@ label {
 .applications-admin .submit-btn,
 .applications-admin .search-btn,
 .fundings-admin .submit-btn,
-.fundings-admin .search-btn {
+.fundings-admin .search-btn,
+.users-admin .submit-btn,
+.users-admin .search-btn {
   padding: 0.5rem 1rem;
   background-color: var(--mofa-blue);
   color: white;
@@ -25316,18 +25331,22 @@ label {
   cursor: pointer;
 }
 .applications-admin .submit-btn,
-.fundings-admin .submit-btn {
+.fundings-admin .submit-btn,
+.users-admin .submit-btn {
   border-radius: 4px;
 }
 .applications-admin .search-btn,
-.fundings-admin .search-btn {
+.fundings-admin .search-btn,
+.users-admin .search-btn {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 .applications-admin .submit-btn:hover,
 .applications-admin .search-btn:hover,
 .fundings-admin .submit-btn:hover,
-.fundings-admin .search-btn:hover {
+.fundings-admin .search-btn:hover,
+.users-admin .submit-btn:hover,
+.users-admin .search-btn:hover {
   background-color: #0056b3;
 }
 .total-count,
@@ -25335,4 +25354,12 @@ label {
   font-weight: bold;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+.users-image {
+  background: #d9d9d9;
+  border-radius: 50%;
+}
+.users-admin .img--avatar {
+  max-width: 60px;
+  max-height: 60px;
 }
