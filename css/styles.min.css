@@ -15484,6 +15484,9 @@ section.section {
 .text-blue {
   color: #8bbde8;
 }
+.text-yellow {
+  color: #fdbf0a;
+}
 .text-gray {
   color: var(--gray);
 }
@@ -25362,4 +25365,33 @@ label {
 .users-admin .img--avatar {
   max-width: 60px;
   max-height: 60px;
+}
+.inactive {
+  color: #d9d9d9 !important;
+  background: #f2f2f2 !important;
+  border: 1px solid #d9d9d9 !important;
+  pointer-events: none;
+}
+.breakdown td {
+  vertical-align: middle !important;
+}
+.admin-await {
+  background: #fdbf0a;
+  color: var(--white);
+  border-radius: 5px;
+}
+.admin-reject {
+  background: var(--red);
+  color: var(--white);
+  border-radius: 5px;
+}
+.admin-await:hover {
+  background: #fee499;
+  color: var(--white);
+  border: 1px solid #fee499
+}
+.admin-reject:hover {
+  background: #e95563;
+  color: var(--white);
+  border: 1px solid #e95563
 }
