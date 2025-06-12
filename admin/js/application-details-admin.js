@@ -201,8 +201,10 @@ $(function () {
               ${
                 item.status === "APPROVED"?
                   `<td class="status approved d-md-none text-white"><i class="fa fa-check"></i></td>`:
+                item.status === "AWAITING" ?
+                  `<td class="status awaiting d-md-none text-white"><i class="fa fa-check"></i></td>`:  
                 item.status === "DENIED" ?
-                  `<td class="status denied d-md-none text-white"><i class="fa fa-times"></i></td>` :
+                  `<td class="status denied d-md-none text-white"><i class="fa fa-times"></i></td>`:
                   `<td class="status pending d-md-none text-white"><i class="fa fa-check"></i></td>`
               }
             </tr>`;

@@ -22281,6 +22281,11 @@ section.shop {
   background: #13a450;
   padding: 1px 5px;
 }
+.applications-item .status.awaiting,
+.applications-card .status.awaiting {
+  background: #fdbf0a;
+  padding: 1px 5px;
+}
 .applications-item .status.denied,
 .applications-card .status.denied {
   background: var(--red);
