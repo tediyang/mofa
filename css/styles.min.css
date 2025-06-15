@@ -5501,9 +5501,9 @@ input[type="submit"].btn-block {
     opacity: 1 !important;
     visibility: visible !important;
   }
-  /* .funding {
+  .funding {
     table-layout: fixed;
-  } */
+  }
 }
 .accordion > .card {
   overflow: hidden;
