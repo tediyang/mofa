@@ -22,7 +22,7 @@ $((function() {
         application_name: "Lung Cancer Treatment",
         name: "ECG",
         amount: 15000,
-        status: "Pending",
+        status: "APPROVED",
         createdOn: "11/01/2025",
         updatedOn: "11/01/2025"
       },
@@ -32,7 +32,7 @@ $((function() {
         application_name: "Lung Cancer Treatment",
         name: "X-RAY",
         amount: 10000,
-        status: "Pending",
+        status: "PENDING",
         createdOn: "12/01/2025",
         updatedOn: "12/01/2025"
       },
@@ -42,7 +42,7 @@ $((function() {
         application_name: "Heart Cancer",
         name: "ECHOCARDIOGRAPHY",
         amount: 55000,
-        status: "Pending",
+        status: "PENDING",
         createdOn: "12/01/2025",
         updatedOn: "12/01/2025"
       },
@@ -52,7 +52,7 @@ $((function() {
         application_name: "Skin Melanoma",
         name: "DERMATOLOGIST SESSION",
         amount: 35000,
-        status: "Pending",
+        status: "PENDING",
         createdOn: "15/01/2025",
         updatedOn: "15/01/2025"
       },
@@ -62,7 +62,7 @@ $((function() {
         application_name: "Skin Melanoma",
         name: "NIZODEM",
         amount: 5000,
-        status: "Pending",
+        status: "DENIED",
         createdOn: "15/01/2025",
         updatedOn: "15/01/2025"
       },
